@@ -91,9 +91,12 @@ function renderProducts() {
              style="touch-action: manipulation;">`;
     }
 
-    // Name cell
+    // Name + description cell
     const nameCell = document.createElement("td");
-    nameCell.innerHTML = `<span class="product-name">${product.descriere}</span>`;
+    nameCell.innerHTML = `
+      <span class="product-name">${product.descriere}</span>
+      <div class="product-desc">${product.descriereText || ""}</div>
+    `;
 
     // Price cell
     const priceCell = document.createElement("td");

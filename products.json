@@ -2,54 +2,63 @@
   {
     "id": 1,
     "descriere": "Cubul infinit 2x2",
+    "descriereText": "Se rotește continuu și te relaxează.",
     "pret": 15,
     "poze": ["assets/cubul-infinit.jpg"]
   },
   {
     "id": 2,
     "descriere": "Fluierul telescopic",
+    "descriereText": "Fluier compact ce se extinde pentru un sunet clar.",
     "pret": 5,
     "poze": ["assets/fluierul-telescopic.jpg"]
   },
   {
     "id": 3,
     "descriere": "Axolotul articulat",
+    "descriereText": "Figurină drăguță cu îmbinări flexibile.",
     "pret": 15,
     "poze": ["assets/axolotul-articulat.jpg"]
   },
   {
     "id": 4,
     "descriere": "Fluierul manual",
+    "descriereText": "Model clasic ușor de folosit oriunde.",
     "pret": 5,
     "poze": ["assets/fluierul-manual.png", "assets/fluierul-manual2.png"]
   },
   {
     "id": 5,
     "descriere": "Fluierul de buzunar",
+    "descriereText": "Mic și practic, mereu la îndemână.",
     "pret": 5,
     "poze": ["assets/fluierul-de-buzunar.jpg"]
   },
   {
     "id": 6,
     "descriere": "Nai dublu",
+    "descriereText": "Două rânduri pentru melodii variate.",
     "pret": 25,
     "poze": ["assets/nai-dublu.png"]
   },
   {
     "id": 7,
     "descriere": "Nai simplu",
+    "descriereText": "Ideal pentru primele melodii.",
     "pret": 15,
     "poze": ["assets/nai-simplu.jpg"]
   },
   {
     "id": 8,
     "descriere": "Fluierul sunet de vapor",
+    "descriereText": "Imită un semnal puternic de vapor.",
     "pret": 10,
     "poze": ["assets/fluierul-sunet-de-vapor.jpg"]
   },
   {
     "id": 9,
     "descriere": "Flaut Fa# minor",
+    "descriereText": "Ajustat pe tonalitatea Fa diez minor.",
     "pret": 10,
     "poze": ["assets/flaut-fa-minor.png"]
   }
