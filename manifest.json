@@ -1,0 +1,26 @@
+{
+  "name": "Levi 3D Lab - Magazin de Design-uri 3D",
+  "short_name": "Levi 3D Lab",
+  "description": "Magazinul online al lui Levi cu creații 3D unice. Câștigurile sunt folosite pentru a-și alimenta pasiunea pentru design 3D!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "lang": "ro"
+}

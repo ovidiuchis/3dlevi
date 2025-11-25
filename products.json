@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "descriere": "Cubul infinit 2x2",
+    "pret": 15,
+    "poze": ["assets/cubul-infinit.jpg"]
+  },
+  {
+    "id": 2,
+    "descriere": "Fluierul telescopic",
+    "pret": 5,
+    "poze": ["assets/fluierul-telescopic.jpg"]
+  },
+  {
+    "id": 3,
+    "descriere": "Axolotul articulat",
+    "pret": 15,
+    "poze": ["assets/axolotul-articulat.jpg"]
+  },
+  {
+    "id": 4,
+    "descriere": "Fluierul manual",
+    "pret": 5,
+    "poze": ["assets/fluierul-manual.png", "assets/fluierul-manual2.png"]
+  },
+  {
+    "id": 5,
+    "descriere": "Fluierul de buzunar",
+    "pret": 5,
+    "poze": ["assets/fluierul-de-buzunar.jpg"]
+  },
+  {
+    "id": 6,
+    "descriere": "Nai dublu",
+    "pret": 25,
+    "poze": ["assets/nai-dublu.png"]
+  },
+  {
+    "id": 7,
+    "descriere": "Nai simplu",
+    "pret": 15,
+    "poze": ["assets/nai-simplu.jpg"]
+  },
+  {
+    "id": 8,
+    "descriere": "Fluierul sunet de vapor",
+    "pret": 10,
+    "poze": ["assets/fluierul-sunet-de-vapor.jpg"]
+  },
+  {
+    "id": 9,
+    "descriere": "Flaut Fa# minor",
+    "pret": 10,
+    "poze": ["assets/flaut-fa-minor.png"]
+  }
+]

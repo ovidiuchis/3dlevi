@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Levi 3D Lab - Magazin de Design-uri 3D</title>
+
+    <!-- Meta Tags for SEO and Social Sharing -->
+    <meta
+      name="description"
+      content="Magazinul online al lui Levi cu creații 3D unice și personalizate. Cuburi infinite, fluiere, axolotl articulat și multe altele! Câștigurile sunt folosite pentru a-și alimenta pasiunea pentru design 3D."
+    />
+    <meta
+      name="keywords"
+      content="Levi 3D, design 3D, printare 3D, obiecte 3D, creații 3D, magazin 3D, cubul infinit, fluier 3D, axolotl articulat"
+    />
+    <meta name="author" content="Levi" />
+    <meta name="theme-color" content="#6366f1" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://levi3dlab.ro/" />
+    <meta property="og:title" content="Levi 3D Lab - Creații 3D Unice" />
+    <meta
+      property="og:description"
+      content="Descoperă magazinul lui Levi cu design-uri 3D creative! Cuburi infinite, fluiere telescopice, axolotl articulat și multe altele. Personalizează-le în culorile tale preferate!"
+    />
+    <meta
+      property="og:image"
+      content="https://levi3dlab.ro/assets/og-image.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ro_RO" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://levi3dlab.ro/" />
+    <meta name="twitter:title" content="Levi 3D Lab - Creații 3D Unice" />
+    <meta
+      name="twitter:description"
+      content="Descoperă magazinul lui Levi cu design-uri 3D creative! Personalizează-le în culorile tale preferate!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://levi3dlab.ro/assets/twitter-image.jpg"
+    />
+
+    <!-- Apple Touch Icon -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/apple-touch-icon.png"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16x16.png"
+    />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo">
+          <div class="logo-3d">🎲</div>
+          <h1>Levi 3D Lab</h1>
+          <img src="assets/lev.jpg" alt="Levi" class="medallion" />
+        </div>
+        <p class="tagline">Noua mea pasiune!</p>
+        <div class="mission">
+          <p>
+            🚀 Câștigurile mele vor fi folosite pentru a-mi alimenta
+            descoperirea lumii obiectelor 3D!
+          </p>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <h2 class="section-title">Alege-ți Creațiile Preferate</h2>
+
+        <!-- Products Table -->
+        <div class="products-section">
+          <div class="table-container">
+            <table class="products-table" id="productsTable">
+              <thead>
+                <tr>
+                  <th>Selectează</th>
+                  <th>Imagine</th>
+                  <th>Produs</th>
+                  <th>Preț (RON)</th>
+                  <th class="colors-header">Culoare</th>
+                </tr>
+              </thead>
+              <tbody id="productsBody">
+                <!-- Products will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+          <div class="total-section">
+            <h3>Total Comandă</h3>
+            <div class="total-price">
+              <span class="total-label">Total:</span>
+              <span class="total-amount" id="totalAmount">0 RON</span>
+            </div>
+            <div class="selected-count" id="selectedCount">
+              0 produse selectate
+            </div>
+          </div>
+
+          <button class="whatsapp-btn" id="whatsappBtn" disabled>
+            <span class="whatsapp-icon">📱</span>
+            <span>Trimite Comanda pe WhatsApp</span>
+          </button>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>💙 Realizat cu pasiune de Levi</p>
+        <p class="footer-note">
+          Fiecare comandă mă ajută să învăț mai multe despre design 3D!
+        </p>
+      </footer>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+      <span class="modal-close">&times;</span>
+      <button class="modal-nav modal-prev" onclick="navigateGallery(-1)">
+        <span>&#10094;</span>
+      </button>
+      <img class="modal-content" id="modalImage" />
+      <button class="modal-nav modal-next" onclick="navigateGallery(1)">
+        <span>&#10095;</span>
+      </button>
+      <div id="modalCaption"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

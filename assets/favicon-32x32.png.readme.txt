@@ -1,0 +1,5 @@
+<!-- 
+  Favicon PNG 32x32 pixels
+  Poți genera din favicon.svg sau crea manual
+  Salvează ca assets/favicon-32x32.png
+-->

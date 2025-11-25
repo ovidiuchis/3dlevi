@@ -1,0 +1,5 @@
+<!-- 
+  Icon PWA 192x192 pixels
+  Pentru Progressive Web App
+  Salvează ca assets/icon-192.png
+-->

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "black",
+    "nume": "Negru",
+    "hex": "#1a1a1a"
+  },
+  {
+    "id": "white",
+    "nume": "Alb jad",
+    "hex": "#ffffff"
+  },
+  {
+    "id": "blue",
+    "nume": "Albastru",
+    "hex": "#0086d6"
+  },
+  {
+    "id": "pink",
+    "nume": "Roz",
+    "hex": "#f55a74"
+  },
+  {
+    "id": "green",
+    "nume": "Verde",
+    "hex": "#16c344"
+  }
+]

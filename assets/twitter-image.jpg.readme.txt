@@ -1,0 +1,7 @@
+<!-- 
+  Acest fișier trebuie să fie o imagine 1200x600px pentru Twitter Card
+  Similar cu og-image.jpg dar optimizat pentru Twitter
+  
+  Poți crea această imagine cu orice tool de design (Canva, Photoshop, Figma, etc.)
+  și salveaz-o ca assets/twitter-image.jpg
+-->
