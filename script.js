@@ -103,32 +103,44 @@ function renderProducts() {
     const colorsCell = document.createElement("td");
     colorsCell.className = "colors-cell";
 
-    // Create mobile dropdown
-    const mobileSelect = document.createElement("select");
-    mobileSelect.className = "color-select-mobile";
-    mobileSelect.id = `color-select-${product.id}`;
-    mobileSelect.disabled = true;
-    mobileSelect.onchange = (e) =>
-      handleColorSelect(product.id, e.target.value);
+    // Create mobile custom dropdown
+    const mobileDropdown = document.createElement("div");
+    mobileDropdown.className = "color-select-mobile custom-dropdown";
+    mobileDropdown.id = `color-select-${product.id}`;
+    mobileDropdown.setAttribute("data-disabled", "true");
+    mobileDropdown.setAttribute("data-product-id", product.id);
 
-    // Add default option
-    const defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.textContent = "Alege culoarea...";
-    defaultOption.disabled = true;
-    defaultOption.selected = true;
-    mobileSelect.appendChild(defaultOption);
+    // Selected display
+    const selectedDisplay = document.createElement("div");
+    selectedDisplay.className = "dropdown-selected";
+    selectedDisplay.innerHTML = `
+      <span class="selected-text">Alege culoarea...</span>
+      <span class="dropdown-arrow">▼</span>
+    `;
+    selectedDisplay.onclick = () => toggleCustomDropdown(product.id);
 
-    // Add color options to dropdown
+    // Options list
+    const optionsList = document.createElement("div");
+    optionsList.className = "dropdown-options";
+
     colors.forEach((color) => {
-      const option = document.createElement("option");
-      option.value = color.id;
-      option.textContent = `● ${color.nume}`;
-      option.setAttribute("data-color", color.hex);
-      mobileSelect.appendChild(option);
+      const optionItem = document.createElement("div");
+      optionItem.className = "dropdown-option";
+      optionItem.setAttribute("data-value", color.id);
+      optionItem.innerHTML = `
+        <span class="color-circle" style="background-color: ${color.hex}; ${
+        color.id === "white" ? "border: 2px solid #d1d5db;" : ""
+      }"></span>
+        <span class="color-name">${color.nume}</span>
+      `;
+      optionItem.onclick = () =>
+        selectCustomDropdownOption(product.id, color.id, color.nume, color.hex);
+      optionsList.appendChild(optionItem);
     });
 
-    colorsCell.appendChild(mobileSelect);
+    mobileDropdown.appendChild(selectedDisplay);
+    mobileDropdown.appendChild(optionsList);
+    colorsCell.appendChild(mobileDropdown);
 
     // Create desktop color boxes (radio buttons)
     const desktopColors = document.createElement("div");
@@ -178,12 +190,17 @@ function handleProductSelect(productId) {
   const checkbox = document.getElementById(`product-${productId}`);
   const row = document.querySelector(`tr[data-product-id="${productId}"]`);
   const colorRadios = row.querySelectorAll(".color-radio");
-  const colorSelect = row.querySelector(".color-select-mobile");
+  const customDropdown = row.querySelector(
+    ".color-select-mobile.custom-dropdown"
+  );
 
   if (checkbox.checked) {
     // Enable color selection
     colorRadios.forEach((radio) => (radio.disabled = false));
-    if (colorSelect) colorSelect.disabled = false;
+    if (customDropdown) {
+      customDropdown.setAttribute("data-disabled", "false");
+      customDropdown.classList.remove("disabled");
+    }
     row.classList.add("selected");
 
     // Add to selections if not already there
@@ -199,9 +216,15 @@ function handleProductSelect(productId) {
       radio.disabled = true;
       radio.checked = false;
     });
-    if (colorSelect) {
-      colorSelect.disabled = true;
-      colorSelect.value = "";
+    if (customDropdown) {
+      customDropdown.setAttribute("data-disabled", "true");
+      customDropdown.classList.add("disabled");
+      const selectedText = customDropdown.querySelector(".selected-text");
+      if (selectedText) selectedText.textContent = "Alege culoarea...";
+      const selectedCircle = customDropdown.querySelector(
+        ".selected-color-circle"
+      );
+      if (selectedCircle) selectedCircle.remove();
     }
     row.classList.remove("selected");
 
@@ -472,4 +495,63 @@ document.addEventListener("DOMContentLoaded", () => {
         .products-table tbody tr:nth-child(8) { animation-delay: 0.8s; }
     `;
   document.head.appendChild(style);
+
+  // Close custom dropdowns when clicking outside
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".custom-dropdown")) {
+      document.querySelectorAll(".custom-dropdown").forEach((dropdown) => {
+        dropdown.classList.remove("open");
+      });
+    }
+  });
 });
+
+// Custom dropdown functions
+function toggleCustomDropdown(productId) {
+  const dropdown = document.getElementById(`color-select-${productId}`);
+  if (!dropdown || dropdown.getAttribute("data-disabled") === "true") return;
+
+  const isOpen = dropdown.classList.contains("open");
+
+  // Close all other dropdowns
+  document.querySelectorAll(".custom-dropdown").forEach((dd) => {
+    dd.classList.remove("open");
+  });
+
+  // Toggle this dropdown
+  if (!isOpen) {
+    dropdown.classList.add("open");
+  }
+}
+
+function selectCustomDropdownOption(productId, colorId, colorName, colorHex) {
+  const dropdown = document.getElementById(`color-select-${productId}`);
+  if (!dropdown || dropdown.getAttribute("data-disabled") === "true") return;
+
+  // Update the selected display
+  const selectedDisplay = dropdown.querySelector(".dropdown-selected");
+  const selectedText = selectedDisplay.querySelector(".selected-text");
+
+  // Remove existing color circle if any
+  const existingCircle = selectedDisplay.querySelector(
+    ".selected-color-circle"
+  );
+  if (existingCircle) existingCircle.remove();
+
+  // Add new color circle
+  const colorCircle = document.createElement("span");
+  colorCircle.className = "selected-color-circle color-circle";
+  colorCircle.style.backgroundColor = colorHex;
+  if (colorId === "white") {
+    colorCircle.style.border = "2px solid #d1d5db";
+  }
+
+  selectedDisplay.insertBefore(colorCircle, selectedText);
+  selectedText.textContent = colorName;
+
+  // Close dropdown
+  dropdown.classList.remove("open");
+
+  // Update selection and sync with radio buttons
+  handleColorSelect(productId, colorId);
+}
