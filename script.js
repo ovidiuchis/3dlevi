@@ -311,9 +311,7 @@ document.getElementById("whatsappBtn").addEventListener("click", () => {
     }
   });
 
-  message += `💰 *TOTAL: ${total} RON*\n\n`;
-  message +=
-    "✨ Mulțumesc pentru comandă! Câștigurile vor fi folosite pentru a-mi continua pasiunea pentru design 3D!";
+  message += `💰 *TOTAL: ${total} RON*`;
 
   // Encode message for URL
   const encodedMessage = encodeURIComponent(message);
