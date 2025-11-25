@@ -1,5 +1,0 @@
-<!-- 
-  Favicon PNG 16x16 pixels
-  Poți genera din favicon.svg sau crea manual
-  Salvează ca assets/favicon-16x16.png
--->

@@ -1,7 +1,0 @@
-<!-- 
-  Apple Touch Icon 180x180 pixels
-  Imagine pentru home screen pe iOS
-  Salvează ca assets/apple-touch-icon.png
-  
-  Sugestie: folosește același design ca favicon.svg dar 180x180px
--->

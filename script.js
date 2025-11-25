@@ -265,6 +265,7 @@ function updateOrderSummary() {
   const totalAmountEl = document.getElementById("totalAmount");
   const selectedCountEl = document.getElementById("selectedCount");
   const whatsappBtn = document.getElementById("whatsappBtn");
+  const nameInput = document.getElementById("customerName");
 
   // Calculate total
   let total = 0;
@@ -280,14 +281,26 @@ function updateOrderSummary() {
     selections.length === 1 ? "produs selectat" : "produse selectate"
   }`;
 
+  // Enable/disable name input
+  if (selections.length > 0) {
+    nameInput.disabled = false;
+  } else {
+    nameInput.disabled = true;
+    nameInput.value = "";
+  }
+
   // Enable/disable WhatsApp button
   const allHaveColors =
     selections.length > 0 && selections.every((s) => s.colorId !== null);
-  whatsappBtn.disabled = !allHaveColors;
+  const hasName = nameInput.value.trim() !== "";
+  whatsappBtn.disabled = !(allHaveColors && hasName);
 }
 
 // Send order via WhatsApp
 document.getElementById("whatsappBtn").addEventListener("click", () => {
+  const nameInput = document.getElementById("customerName");
+  const customerName = nameInput.value.trim();
+
   if (selections.length === 0) return;
 
   // Check if all selections have colors
@@ -297,8 +310,16 @@ document.getElementById("whatsappBtn").addEventListener("click", () => {
     return;
   }
 
+  // Check if name is provided
+  if (customerName === "") {
+    alert("Te rugăm să introduci numele tău!");
+    nameInput.focus();
+    return;
+  }
+
   // Build message
   let message = "🎨 *Comandă Levi 3D Lab*\n\n";
+  message += `👤 *Pentru:* ${customerName}\n\n`;
   message += "📦 *Produse comandate:*\n\n";
 
   let total = 0;
@@ -473,6 +494,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Add smooth scroll behavior
   document.documentElement.style.scrollBehavior = "smooth";
+
+  // Add name input listener
+  const nameInput = document.getElementById("customerName");
+  if (nameInput) {
+    nameInput.addEventListener("input", updateOrderSummary);
+  }
 
   // Add loading animation
   const style = document.createElement("style");
