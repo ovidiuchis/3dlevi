@@ -35,13 +35,6 @@
     "poze": ["assets/fluierul-de-buzunar.jpg"]
   },
   {
-    "id": 6,
-    "descriere": "Nai dublu",
-    "descriereText": "Două rânduri pentru melodii variate.",
-    "pret": 25,
-    "poze": ["assets/nai-dublu.png"]
-  },
-  {
     "id": 7,
     "descriere": "Nai simplu",
     "descriereText": "Ideal pentru primele melodii.",
