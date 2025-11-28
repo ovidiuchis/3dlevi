@@ -4,55 +4,71 @@
     "descriere": "Cubul infinit 2x2",
     "descriereText": "Se rotește continuu și te relaxează.",
     "pret": 15,
-    "poze": ["assets/cubul-infinit.jpg"]
+    "poze": ["assets/cubul-infinit.jpg"],
+    "activ": true
   },
   {
     "id": 2,
     "descriere": "Fluierul telescopic",
     "descriereText": "Fluier compact ce se extinde pentru un sunet clar.",
     "pret": 5,
-    "poze": ["assets/fluierul-telescopic.jpg"]
+    "poze": ["assets/fluierul-telescopic.jpg"],
+    "activ": true
   },
   {
     "id": 3,
     "descriere": "Axolotul articulat",
     "descriereText": "Figurină drăguță cu îmbinări flexibile.",
     "pret": 15,
-    "poze": ["assets/axolotul-articulat.jpg"]
+    "poze": ["assets/axolotul-articulat.jpg"],
+    "activ": true
   },
   {
     "id": 4,
     "descriere": "Fluierul manual",
     "descriereText": "Model clasic ușor de folosit oriunde.",
     "pret": 5,
-    "poze": ["assets/fluierul-manual.png", "assets/fluierul-manual2.png"]
+    "poze": ["assets/fluierul-manual.png", "assets/fluierul-manual2.png"],
+    "activ": true
   },
   {
     "id": 5,
     "descriere": "Fluierul de buzunar",
     "descriereText": "Mic și practic, mereu la îndemână.",
     "pret": 3,
-    "poze": ["assets/fluierul-de-buzunar.jpg"]
+    "poze": ["assets/fluierul-de-buzunar.jpg"],
+    "activ": true
   },
   {
     "id": 7,
     "descriere": "Nai simplu",
     "descriereText": "Ideal pentru primele melodii.",
     "pret": 15,
-    "poze": ["assets/nai-simplu.jpg"]
+    "poze": ["assets/nai-simplu.jpg"],
+    "activ": true
   },
   {
     "id": 8,
     "descriere": "Fluierul sunet de vapor",
     "descriereText": "Imită un semnal puternic de vapor.",
     "pret": 10,
-    "poze": ["assets/fluierul-sunet-de-vapor.jpg"]
+    "poze": ["assets/fluierul-sunet-de-vapor.jpg"],
+    "activ": true
   },
   {
     "id": 9,
     "descriere": "Flaut Fa# minor",
     "descriereText": "Ajustat pe tonalitatea Fa diez minor.",
     "pret": 10,
-    "poze": ["assets/flaut-fa-minor.png"]
+    "poze": ["assets/flaut-fa-minor.png"],
+    "activ": true
+  },
+  {
+    "id": 6,
+    "descriere": "Nai dublu",
+    "descriereText": "Două rânduri pentru melodii variate.",
+    "pret": 25,
+    "poze": ["assets/nai-dublu.png"],
+    "activ": false
   }
 ]

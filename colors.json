@@ -2,26 +2,31 @@
   {
     "id": "black",
     "nume": "Negru",
-    "hex": "#1a1a1a"
+    "hex": "#1a1a1a",
+    "activ": false
   },
   {
     "id": "white",
     "nume": "Alb jad",
-    "hex": "#ffffff"
+    "hex": "#ffffff",
+    "activ": true
   },
   {
     "id": "blue",
     "nume": "Albastru",
-    "hex": "#0086d6"
+    "hex": "#0086d6",
+    "activ": true
   },
   {
     "id": "pink",
     "nume": "Roz",
-    "hex": "#f55a74"
+    "hex": "#f55a74",
+    "activ": true
   },
   {
     "id": "green",
     "nume": "Verde",
-    "hex": "#16c344"
+    "hex": "#16c344",
+    "activ": true
   }
 ]

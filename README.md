@@ -1,44 +1,32 @@
 ## 📄 Structura fișierelor JSON
 
-### `products.json`
-
-Conține o listă de produse, fiecare cu:
-
-- `id` (număr/unic)
-- `descriere` (nume produs)
-- `pret` (preț în RON)
-- `poze` (listă de URL-uri imagini)
-- `descriereText` (opțional, detalii suplimentare)
-
-**Exemplu:**
+### Structură `products.json`
 
 ```json
 {
-  "id": 1,
-  "descriere": "Cub infinit",
-  "pret": 25,
-  "poze": ["assets/cub1.jpg", "assets/cub2.jpg"],
-  "descriereText": "Cub articulat, perfect de fidgeting."
+  "id": 1,                // număr, unic
+  "descriere": "text",     // nume produs
+  "pret": 25,              // preț în RON
+  "poze": ["url1", ...],   // listă de URL-uri imagini
+  "descriereText": "...",  // opțional, detalii suplimentare
+  "activ": true            // boolean, dacă produsul e vizibil (true/false)
 }
 ```
 
-### `colors.json`
+- Doar produsele cu `"activ": true` apar în listă. Dacă vrei să ascunzi un produs, pune `"activ": false`.
 
-Conține o listă de culori disponibile, fiecare cu:
-
-- `id` (string, unic)
-- `nume` (nume culoare)
-- `hex` (cod hexazecimal pentru culoare)
-
-**Exemplu:**
+### Structură `colors.json`
 
 ```json
 {
-  "id": "blue",
-  "nume": "Albastru",
-  "hex": "#0086d6"
+  "id": "string", // unic, ex: "blue"
+  "nume": "text", // nume culoare
+  "hex": "#xxxxxx", // cod hexazecimal
+  "activ": true // boolean, dacă culoarea e vizibilă (true/false)
 }
 ```
+
+- Doar culorile cu `"activ": true` apar la selecție. Dacă vrei să ascunzi o culoare, pune `"activ": false`.
 
 # Levi 3D Lab – Magazin 3D interactiv
 

@@ -39,27 +39,29 @@ function renderProducts() {
   const tbody = document.getElementById("productsBody");
   tbody.innerHTML = "";
 
-  products.forEach((product) => {
-    const row = document.createElement("tr");
-    row.dataset.productId = product.id;
+  products
+    .filter((product) => product.activ !== false)
+    .forEach((product) => {
+      const row = document.createElement("tr");
+      row.dataset.productId = product.id;
 
-    // Checkbox cell
-    const checkboxCell = document.createElement("td");
-    checkboxCell.className = "checkbox-cell";
-    checkboxCell.innerHTML = `
+      // Checkbox cell
+      const checkboxCell = document.createElement("td");
+      checkboxCell.className = "checkbox-cell";
+      checkboxCell.innerHTML = `
             <input type="checkbox" 
                    class="product-checkbox" 
                    id="product-${product.id}" 
                    onchange="handleProductSelect(${product.id})">
         `;
 
-    // Image cell with gallery support
-    const imageCell = document.createElement("td");
-    imageCell.className = "image-cell-container";
+      // Image cell with gallery support
+      const imageCell = document.createElement("td");
+      imageCell.className = "image-cell-container";
 
-    if (product.poze.length > 1) {
-      // Multiple images - create gallery
-      let galleryHTML = `
+      if (product.poze.length > 1) {
+        // Multiple images - create gallery
+        let galleryHTML = `
         <div class="image-gallery">
           <img src="${product.poze[0]}" 
                alt="${product.descriere}" 
@@ -69,123 +71,132 @@ function renderProducts() {
                style="touch-action: manipulation;">
           <div class="gallery-indicators">`;
 
-      product.poze.forEach((_, index) => {
-        galleryHTML += `<span class="gallery-dot ${
-          index === 0 ? "active" : ""
-        }" onclick="changeMainImage(${product.id}, ${index})"></span>`;
-      });
+        product.poze.forEach((_, index) => {
+          galleryHTML += `<span class="gallery-dot ${
+            index === 0 ? "active" : ""
+          }" onclick="changeMainImage(${product.id}, ${index})"></span>`;
+        });
 
-      galleryHTML += `
+        galleryHTML += `
           </div>
         </div>`;
 
-      imageCell.innerHTML = galleryHTML;
-    } else {
-      // Single image
-      imageCell.innerHTML = `
+        imageCell.innerHTML = galleryHTML;
+      } else {
+        // Single image
+        imageCell.innerHTML = `
         <img src="${product.poze[0]}" 
              alt="${product.descriere}" 
              class="product-image"
              onclick="openImageGallery(${product.id}, 0)"
              onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23e5e7eb%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2214%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236b7280%22%3E${product.descriere}%3C/text%3E%3C/svg%3E'"
              style="touch-action: manipulation;">`;
-    }
+      }
 
-    // Name + description cell
-    const nameCell = document.createElement("td");
-    nameCell.innerHTML = `
+      // Name + description cell
+      const nameCell = document.createElement("td");
+      nameCell.innerHTML = `
       <span class="product-name">${product.descriere}</span>
       <div class="product-desc">${product.descriereText || ""}</div>
     `;
 
-    // Price cell
-    const priceCell = document.createElement("td");
-    priceCell.innerHTML = `<span class="product-price">${product.pret} RON</span>`;
+      // Price cell
+      const priceCell = document.createElement("td");
+      priceCell.innerHTML = `<span class="product-price">${product.pret} RON</span>`;
 
-    // Colors cell
-    const colorsCell = document.createElement("td");
-    colorsCell.className = "colors-cell";
+      // Colors cell
+      const colorsCell = document.createElement("td");
+      colorsCell.className = "colors-cell";
 
-    // Create mobile custom dropdown
-    const mobileDropdown = document.createElement("div");
-    mobileDropdown.className = "color-select-mobile custom-dropdown";
-    mobileDropdown.id = `color-select-${product.id}`;
-    mobileDropdown.setAttribute("data-disabled", "true");
-    mobileDropdown.setAttribute("data-product-id", product.id);
+      // Create mobile custom dropdown
+      const mobileDropdown = document.createElement("div");
+      mobileDropdown.className = "color-select-mobile custom-dropdown";
+      mobileDropdown.id = `color-select-${product.id}`;
+      mobileDropdown.setAttribute("data-disabled", "true");
+      mobileDropdown.setAttribute("data-product-id", product.id);
 
-    // Selected display
-    const selectedDisplay = document.createElement("div");
-    selectedDisplay.className = "dropdown-selected";
-    selectedDisplay.innerHTML = `
+      // Selected display
+      const selectedDisplay = document.createElement("div");
+      selectedDisplay.className = "dropdown-selected";
+      selectedDisplay.innerHTML = `
       <span class="selected-text">Alege culoarea...</span>
       <span class="dropdown-arrow">▼</span>
     `;
-    selectedDisplay.onclick = () => toggleCustomDropdown(product.id);
+      selectedDisplay.onclick = () => toggleCustomDropdown(product.id);
 
-    // Options list
-    const optionsList = document.createElement("div");
-    optionsList.className = "dropdown-options";
+      // Options list
+      const optionsList = document.createElement("div");
+      optionsList.className = "dropdown-options";
 
-    colors.forEach((color) => {
-      const optionItem = document.createElement("div");
-      optionItem.className = "dropdown-option";
-      optionItem.setAttribute("data-value", color.id);
-      optionItem.innerHTML = `
+      colors
+        .filter((color) => color.activ !== false)
+        .forEach((color) => {
+          const optionItem = document.createElement("div");
+          optionItem.className = "dropdown-option";
+          optionItem.setAttribute("data-value", color.id);
+          optionItem.innerHTML = `
         <span class="color-circle" style="background-color: ${color.hex}; ${
-        color.id === "white" ? "border: 2px solid #d1d5db;" : ""
-      }"></span>
+            color.id === "white" ? "border: 2px solid #d1d5db;" : ""
+          }"></span>
         <span class="color-name">${color.nume}</span>
       `;
-      optionItem.onclick = () =>
-        selectCustomDropdownOption(product.id, color.id, color.nume, color.hex);
-      optionsList.appendChild(optionItem);
-    });
+          optionItem.onclick = () =>
+            selectCustomDropdownOption(
+              product.id,
+              color.id,
+              color.nume,
+              color.hex
+            );
+          optionsList.appendChild(optionItem);
+        });
 
-    mobileDropdown.appendChild(selectedDisplay);
-    mobileDropdown.appendChild(optionsList);
-    colorsCell.appendChild(mobileDropdown);
+      mobileDropdown.appendChild(selectedDisplay);
+      mobileDropdown.appendChild(optionsList);
+      colorsCell.appendChild(mobileDropdown);
 
-    // Create desktop color boxes (radio buttons)
-    const desktopColors = document.createElement("div");
-    desktopColors.className = "color-options-desktop";
+      // Create desktop color boxes (radio buttons)
+      const desktopColors = document.createElement("div");
+      desktopColors.className = "color-options-desktop";
 
-    colors.forEach((color) => {
-      const colorOption = document.createElement("div");
-      colorOption.className = "color-option";
-      colorOption.setAttribute("data-color-name", color.nume);
+      colors
+        .filter((color) => color.activ !== false)
+        .forEach((color) => {
+          const colorOption = document.createElement("div");
+          colorOption.className = "color-option";
+          colorOption.setAttribute("data-color-name", color.nume);
 
-      colorOption.innerHTML = `
+          colorOption.innerHTML = `
                 <input type="radio" 
                        class="color-radio" 
                        name="color-${product.id}" 
                        value="${color.id}" 
                        id="color-${product.id}-${color.id}"
                        onchange="handleColorSelect(${product.id}, '${
-        color.id
-      }')"
+            color.id
+          }')"
                        disabled>
                 <label for="color-${product.id}-${color.id}">
                     <div class="color-box" style="background-color: ${
                       color.hex
                     }; ${
-        color.id === "white" ? "border-color: #d1d5db;" : ""
-      }"></div>
+            color.id === "white" ? "border-color: #d1d5db;" : ""
+          }"></div>
                 </label>
             `;
 
-      desktopColors.appendChild(colorOption);
+          desktopColors.appendChild(colorOption);
+        });
+
+      colorsCell.appendChild(desktopColors);
+
+      row.appendChild(checkboxCell);
+      row.appendChild(imageCell);
+      row.appendChild(nameCell);
+      row.appendChild(priceCell);
+      row.appendChild(colorsCell);
+
+      tbody.appendChild(row);
     });
-
-    colorsCell.appendChild(desktopColors);
-
-    row.appendChild(checkboxCell);
-    row.appendChild(imageCell);
-    row.appendChild(nameCell);
-    row.appendChild(priceCell);
-    row.appendChild(colorsCell);
-
-    tbody.appendChild(row);
-  });
 }
 
 // Handle product selection
