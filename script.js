@@ -41,6 +41,7 @@ function renderProducts() {
 
   products
     .filter((product) => product.activ !== false)
+    .sort((a, b) => a.id - b.id)
     .forEach((product) => {
       const row = document.createElement("tr");
       row.dataset.productId = product.id;

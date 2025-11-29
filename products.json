@@ -4,7 +4,7 @@
     "descriere": "Cubul infinit 2x2",
     "descriereText": "Se rotește continuu și te relaxează.",
     "pret": 15,
-    "poze": ["assets/cubul-infinit.jpg"],
+    "poze": ["assets/cubul1.gif"],
     "activ": true
   },
   {
@@ -21,7 +21,7 @@
     "descriereText": "Figurină drăguță cu îmbinări flexibile.",
     "pret": 15,
     "poze": ["assets/axolotul-articulat.jpg"],
-    "activ": true
+    "activ": false
   },
   {
     "id": 4,
@@ -38,6 +38,14 @@
     "pret": 3,
     "poze": ["assets/fluierul-de-buzunar.jpg"],
     "activ": true
+  },
+  {
+    "id": 6,
+    "descriere": "Nai dublu",
+    "descriereText": "Două rânduri pentru melodii variate.",
+    "pret": 25,
+    "poze": ["assets/nai-dublu.png"],
+    "activ": false
   },
   {
     "id": 7,
@@ -63,12 +71,13 @@
     "poze": ["assets/flaut-fa-minor.png"],
     "activ": true
   },
+
   {
-    "id": 6,
-    "descriere": "Nai dublu",
-    "descriereText": "Două rânduri pentru melodii variate.",
-    "pret": 25,
-    "poze": ["assets/nai-dublu.png"],
-    "activ": false
+    "id": 1,
+    "descriere": "Fidget spinner cu angrenaj ",
+    "descriereText": "Fidget modern, cu mecanism de roți dințate dispuse în stil „planetar”,",
+    "pret": 10,
+    "poze": ["assets/spinner1.gif"],
+    "activ": true
   }
 ]
